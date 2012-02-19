@@ -7,7 +7,11 @@ module Spree
     preference :max_price, :float, :default => 50
 
     def self.description
-      "Weight buckets for shipping"
+      "Weight buckets"
+    end
+
+    def self.register
+      super
     end
 
     def available?(order)

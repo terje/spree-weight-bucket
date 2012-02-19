@@ -6,10 +6,13 @@ calculates shipping costs based on weight buckets. Ranges of package
 weights are assigned a price and the shipping cost worked out based on
 the total weight of the products in the cart.
 
-Example
+Installation
 =======
 
-Example goes here.
+Add this line to your _Gemfile_:
+
+    gem "spree_weight_bucket", :git => "git@github.com:terje/spree-weight-bucket.git"
+
 
 Testing
 -------
