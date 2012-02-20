@@ -22,8 +22,8 @@ module Spree
     end
 
     def compute(order)
-      prices = self.preferred_price_table.split
-      weights = self.preferred_weight_table.split
+      prices = self.preferred_price_table.nil? ? [] : self.preferred_price_table.split
+      weights = self.preferred_weight_table.nil? ? [] : self.preferred_weight_table.split
 
       weight_prices = weights.to_enum(:each_with_index).map do |weight, i|
         {:weight => weight.to_f, :price => prices[i].to_f}
