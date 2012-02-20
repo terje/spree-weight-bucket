@@ -15,8 +15,8 @@ module Spree
     end
 
     def available?(order)
-      return false if order.total < self.preferred_min_price
-      return false if order.total >= self.preferred_max_price
+      return false if order.total < self.preferred_min_price.to_f
+      return false if order.total >= self.preferred_max_price.to_f
 
       return true
     end
@@ -26,7 +26,7 @@ module Spree
       weights = self.preferred_weight_table.split
 
       weight_prices = weights.to_enum(:each_with_index).map do |weight, i|
-        {:weight => weight.to_f, :price => price.to_f}
+        {:weight => weight.to_f, :price => prices[i].to_f}
       end
 
       total_weight = 0
@@ -35,8 +35,12 @@ module Spree
       end
 
       shipping_price = 0
+      start_of_current_range = 0
       weight_prices.each do |weight_price|
-        shipping_price = weight_price[:price] if total_weight < weight_price[:weight]
+        if total_weight >= start_of_current_range && total_weight < weight_price[:weight]
+          shipping_price = weight_price[:price]
+        end
+        start_of_current_range = weight_price[:weight]
       end
 
       return shipping_price
