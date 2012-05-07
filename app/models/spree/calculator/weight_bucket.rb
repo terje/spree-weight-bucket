@@ -2,9 +2,9 @@ module Spree
   class Calculator::WeightBucket < Calculator
     preference :weight_table, :string
     preference :price_table, :string
-    preference :default_weight, :float, :default => 0
-    preference :min_price, :float, :default => 50
-    preference :max_price, :float, :default => 10000000
+    preference :default_weight, :string, :default => 0
+    preference :min_price, :string, :default => '50'
+    preference :max_price, :string, :default => '10000000'
 
     def self.description
       "Weight buckets"
