@@ -31,7 +31,7 @@ module Spree
 
       total_weight = 0
       order.line_items.each do |item|
-        total_weight += item.quantity * (item.variant.weight || self.preferred_default_weight)
+        total_weight += item.quantity * (item.variant.weight || self.preferred_default_weight.to_f)
       end
 
       shipping_price = 0
