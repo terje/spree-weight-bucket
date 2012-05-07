@@ -3,8 +3,8 @@ module Spree
     preference :weight_table, :string
     preference :price_table, :string
     preference :default_weight, :float, :default => 0
-    preference :min_price, :float, :default => 0
-    preference :max_price, :float, :default => 50
+    preference :min_price, :float, :default => 50
+    preference :max_price, :float, :default => 10000000
 
     def self.description
       "Weight buckets"
